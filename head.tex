@@ -1,0 +1,70 @@
+% 作者：Yuchen Deng〔Zz〕 QQ群：19346666、111601117
+% 欢迎加群共同维护与交流
+
+\documentclass[a4paper,fontset=fandol,zihao=-4,linespread=1.2]{ctexbook}
+
+% \setCJKmainfont{FandolFang-Regular.otf} %中文字体
+\setmainfont[Mapping=tex-text]{PT Mono} %英文字体
+\ctexset{
+  chapter/format = \Large\bfseries\centering,
+  section/format = \large\bfseries,
+  subsection/format = \normalsize\bfseries,
+  chapter/beforeskip = 0pt,
+  chapter/afterskip = 3ex plus 1ex minus 0.6ex,
+  section/beforeskip = 2.5ex plus 1ex minus 0.5ex,
+  section/afterskip = 1.5ex plus 1ex minus 0.3ex,
+  subsection/beforeskip = 2ex plus 1ex minus 0.4ex,
+  subsection/afterskip = 1ex plus 0.5ex minus 0.2ex,
+  today = big
+}
+
+\usepackage{geometry} %布局
+\ifx\publish\undefined
+\geometry{left=2.3cm,right=2.3cm,top=2.0cm,bottom=2.0cm} %页边距
+\else
+\geometry{left=2.6cm,right=2.0cm,top=2.0cm,bottom=2.0cm} %页边距
+\fi
+\setlength{\parskip}{0.2\baselineskip} %段间距
+\linespread{1.1} %行间距
+
+\usepackage[unicode=false,colorlinks,linkcolor=blue]{hyperref} %超链接
+\usepackage{silence} %屏蔽警告
+
+\usepackage{tcolorbox} %盒子
+\tcbset{colback=yellow!10, colframe=red!75!black}
+
+\usepackage{listings} %代码框
+\usepackage{xunicode} %代码框星号修复
+\usepackage{xcolor} %颜色
+
+\newfontfamily\mono{Source Code Pro}
+\lstset{
+	columns=flexible,
+	numbers=left,
+	numbersep=5pt,
+	frame=shadowbox,
+	xleftmargin=1em,
+	xrightmargin=1em,
+	backgroundcolor=\color{gray!2},
+	rulesepcolor=\color{gray!50},
+	basicstyle=\small\mono,
+	keywordstyle=\color{blue!80},
+	numberstyle=\tiny\mono\color{darkgray},
+	commentstyle=\it\mono\color{gray},
+	stringstyle=\color[RGB]{0,168,0},
+	emphstyle=\color[RGB]{166,83,0},
+	showstringspaces=false,
+	breaklines=true,
+	language=bash,
+}
+
+\makeatletter
+\lst@CCPutMacro
+    \lst@ProcessOther {"2D}{-{}}
+    \@empty\z@\@empty
+\makeatother
+
+
+\title{\kaishu {\textcolor{blue!80}{Linux\hspace{0em}技术笔记 v1.0}} \footnote{\textcolor{red!80}{本笔记所涉及到的代码或命令需结合上下文说明并理解，不能简单地复制粘贴后在终端执行。}} \ldots}
+\author{\fangsong Yuchen Deng〔语晨〕{\textcolor{red!80}{\hspace{0em}「QQ\hspace{0em}群\hspace{0.2em}19346666」}}\footnote{{\textcolor{blue!80}{\hspace{0em}Linux\hspace{0.3em}技术钻研群：19346666、111601117，拥抱开源，潜心钻研Linux技术！}}}}
+\date{\kaishu\today}
