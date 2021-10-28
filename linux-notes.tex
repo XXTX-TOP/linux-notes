@@ -12,6 +12,8 @@
 \include{ch03}
 \end{document}
 
+
+
 \begin{lstlisting}
 \end{lstlisting}
 
@@ -20,6 +22,28 @@
 
 \begin{lstlisting} [firstnumber=12]
 \end{lstlisting}
+
+
+\begin{enumerate}
+	\item 序号1
+	\item 序号2
+\end{enumerate}
+
+
+{\vspace{10pt}}
+\begin{tcolorbox}[title=标题]
+	\par{\bf{分隔线}}
+	\tcblower
+	\par{\bf{段落1}}
+	\par{\bf{段落2}}
+\end{tcolorbox}
+
+
+{\bf{粗体}}
+{\mono{'*'}}
+\footnote{脚注}
+$\backslash$ %\∼
+$\sim$ %∼
 
 
 % 图片使用示例1：绽放图片宽度至文字宽度的96%
@@ -40,3 +64,26 @@
 
 % 引用图片
 \par 如图 \ref{fig:2021-10-28 09-55-54} 所示
+
+
+% 并排图片
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		\includegraphics{pic1.png}
+		\caption{Title of pic1}
+	\end{minipage}
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		\includegraphics{pin2.png}
+		\caption{Title of pic2}
+	\end{minipage}
+\end{figure}
+
+
+% 环绕图片，position可以有r或者l两种选项
+\begin{wrapfigure}{position}{width}
+	\centering
+	\includegraphics{pic.png}
+\end{wrapfigure}
