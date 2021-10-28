@@ -12,6 +12,26 @@
 \chapter{系统维护}
 
 
+\section{查看开机启动时间}
+
+\par Linux系统可以自由的查看开机服务所占用的时间，如果发现启动速度变慢，或者进入桌面后要等待几秒才正常显示，则可以执行下面的命令：
+\begin{lstlisting} [numbers=none]
+    $ systemd-analyze critical-chain
+\end{lstlisting}
+\par 执行效果图如图 \ref{fig:2021-10-28_09-55-54} 所示。
+
+\begin{figure} [htbp]
+	\centering
+	\includegraphics [width=0.96\textwidth]{images/ch03/2021-10-28_09-55-54.png}
+	\caption{查看桌面启动时间}
+	\label{fig:2021-10-28_09-55-54}
+\end{figure}
+
+\par 此外，下面的命令可选择输出启动过程详细信息或简要信息，可供维护参考。
+\begin{lstlisting}
+    $ systemd-analyze blame
+    $ systemd-analyze
+\end{lstlisting}
 
 \ifx\all\undefined
 \end{document}

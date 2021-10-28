@@ -1,7 +1,7 @@
 % 作者：Yuchen Deng〔Zz〕 QQ群：19346666、111601117
 % 欢迎加群共同维护与交流
 
-\documentclass[a4paper,fontset=noto,zihao=-4,linespread=1.2]{ctexbook}
+\documentclass[a4paper,fontset=fandol,zihao=-4,linespread=1.2]{ctexbook}
 
 % \setCJKmainfont{FandolFang-Regular.otf} %中文字体
 \setmainfont[Mapping=tex-text]{PT Mono} %英文字体
@@ -64,6 +64,18 @@
     \@empty\z@\@empty
 \makeatother
 
+% 图表
+\usepackage{graphicx} %图像
+\usepackage{subfigure} %多图合一
+\usepackage[all]{hypcap} %图像跳转
+\usepackage{caption} %标题
+\usepackage{multicol} %分栏
+\usepackage{wrapfig} %图文混排
+\usepackage{tabularx} %表格
+\setlength{\intextsep}{2pt plus 2pt minus 2pt}
+\setlength{\textfloatsep} {2pt plus 2pt minus 2pt}
+\setlength\abovecaptionskip{2pt}
+\setlength\belowcaptionskip{3pt}
 
 \title{\kaishu {\textcolor{blue!80}{Linux\hspace{0em}技术笔记 v1.0}} \footnote{\textcolor{red!80}{本笔记所涉及到的代码或命令需结合上下文说明并理解，不能简单地复制粘贴后在终端执行。}} \ldots}
 \author{\fangsong Yuchen Deng〔语晨〕{\textcolor{red!80}{\hspace{0em}「QQ\hspace{0em}群\hspace{0.2em}19346666」}}\footnote{{\textcolor{blue!80}{\hspace{0em}Linux\hspace{0.3em}技术钻研群：19346666、111601117，拥抱开源，潜心钻研Linux技术！}}}}

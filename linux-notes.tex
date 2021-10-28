@@ -15,8 +15,28 @@
 \begin{lstlisting}
 \end{lstlisting}
 
-\begin{lstlisting}[numbers=none]
+\begin{lstlisting} [numbers=none]
 \end{lstlisting}
 
-\begin{lstlisting}[firstnumber=12]
+\begin{lstlisting} [firstnumber=12]
 \end{lstlisting}
+
+
+% 图片使用示例1：绽放图片宽度至文字宽度的96%
+\begin{figure} [htbp]
+	\centering
+	\includegraphics [width=0.96\textwidth]{images/ch03/2021-10-28_09-55-54.png}
+	\caption{查看桌面启动时间}
+	\label{fig:2021-10-28_09-55-54}
+\end{figure}
+
+% 图片使用示例2：绽放图片至自身宽度的90%
+\begin{figure} [htbp]
+	\centering
+	\includegraphics [scale=0.9]{images/ch03/2021-10-28 09-55-54.png}
+	\caption{查看桌面启动时间}
+	\label{fig:2021-10-28_09-55-54}
+\end{figure}
+
+% 引用图片
+\par 如图 \ref{fig:2021-10-28 09-55-54} 所示
