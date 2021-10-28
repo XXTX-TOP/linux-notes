@@ -7,10 +7,22 @@
 \input{page}
 \fi
 
+
 \setcounter{chapter}{0}
 
 \chapter{终端基础命令}
 
+
+\section{什么是终端}
+
+\par Linux 系统安装后，绝大多数的操作都是可视化的，用鼠标和键盘与桌面交互，就可以日常使用了。但为了更好的使用或者运维 Linux 系统，我们有时还是离不开命令行的。终端就是一个通过命令来与系统交互的窗口（应用），它的英文名字叫 Terminal 。像 Ubuntu 系统、KDE Plasma 桌面，默认都绑定了 Ctrl+Alt+T 快捷键来启动终端，elementary OS 6 则默认绑定 Super+T 快捷键。没有绑定快捷键的系统，如 Debian、Fedora等，则可以通过启动器来启动，或者自己添加自定义启动快捷键。
+\par 对GNOME桌面，默认的终端应用是 gnome-terminal ，KDE Plasma 桌面默认终端应用 Konsole，桌面不同，一般终端应用各异，但作用相同，用法类似。
+\par 打开终端后，请依序执行以下命令，你会有收获的。
+\begin{lstlisting}
+    $ help
+    $ whatis man
+    $ man man 1
+\end{lstlisting}
 
 
 \ifx\all\undefined
