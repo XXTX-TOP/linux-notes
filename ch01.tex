@@ -15,7 +15,7 @@
 
 \section{认识超级键}
 
-\par 超级键（Super 键）也叫 Windows 键、徽标键或系统键，在现代的操作系统中通常用来呼叫出功能表或菜单。不同的桌面，该键或者与该键组合的快捷键功能略有不同，很多系统单独按下超级键时，会显示启动器（菜单），或者通过系统设置来让超级键显示启动器。启动器展示所有应用的入口，它的体验好坏、效率高低，自然非常重要。
+\par 超级键（Super 键）也叫Windows键、徽标键或系统键，在现代的操作系统中通常用来呼叫出功能表或菜单。不同的桌面，该键或者与该键组合的快捷键功能略有不同，很多系统单独按下超级键时，会显示启动器（菜单），或者通过系统设置来让超级键显示启动器。启动器展示所有应用的入口，它的体验好坏、效率高低，自然非常重要。
 
 \begin{figure} [htbp]
 	\centering
@@ -34,8 +34,8 @@
 
 \section{什么是终端}
 
-\par Linux 系统安装后，绝大多数的操作都是可视化的，用鼠标和键盘与桌面交互，就可以日常使用了。但为了更好的使用或者运维 Linux 系统，我们有时还是离不开命令行的。终端就是一个通过命令来与系统交互的窗口（应用），它的英文名字叫 Terminal 。像 Ubuntu 系统、KDE Plasma 桌面，默认都绑定了“Ctrl+Alt+T”快捷键来启动终端，elementary OS 6 则默认绑定“Super+T”快捷键。没有绑定快捷键的系统，如 Debian、Fedora等，则可以通过启动器来启动，或者自定义快捷键启动。
-\par 对GNOME桌面，默认的终端应用是 gnome-terminal ，KDE Plasma 桌面默认终端应用 Konsole，桌面不同，一般终端应用各异，但作用相同，用法类似。
+\par Linux系统安装后，绝大多数的操作都是可视化的，用鼠标和键盘与桌面交互，就可以日常使用了。但为了更好的使用或者运维Linux系统，我们有时还是离不开命令行的。终端就是一个通过命令来与系统交互的窗口（应用），它的英文名字叫Terminal。像Ubuntu系统、KDE Plasma桌面，默认都绑定了“Ctrl+Alt+T”快捷键来启动终端，elementary OS 6则默认绑定“Super+T”快捷键。没有绑定快捷键的系统，如Debian、Fedora等，则可以通过启动器来启动，或者自定义快捷键启动。
+\par 对GNOME桌面，默认的终端应用是gnome-terminal ，KDE Plasma桌面默认终端应用konsole，桌面不同，一般终端应用各异，但作用相同，用法类似。
 \par 打开终端后，请依序执行以下\$之后的命令，你会有收获的。
 \begin{lstlisting}
     $ help
@@ -83,6 +83,33 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 \end{lstlisting}
+
+
+\section{目录结构是棵树}
+
+\par Linux目录结构就像是一棵倒挂的树，树干叫根目录，用符号“/”表示，一切从“根”开始，“/”是所有目录的起点。现在请在终端执行命令“ls /”，你会看到在根目录下，还有bin、boot、home、usr...等子目录。
+\begin{lstlisting} [numbers=none]
+    loaden@yuchen:~$ ls /
+    bin   dev  home  lib32  libx32  mnt  proc  run   srv   sys  usr  vmlinuz
+    boot  etc  lib   lib64  media   opt  root  sbin  swap  tmp  var
+\end{lstlisting}
+
+\par 每个目录或者文件都可以看作是树上的枝叶,目录就像树枝，文件就像树叶。树枝上还可以再长树枝，目录中也可以再嵌套目录，但树叶上就不可能再长出树枝了。
+\par 在我当前正在使用的系统上执行下面的命令，输出如图\ref{fig:2021-10-31_16-05-54}所示的结果。
+
+\begin{lstlisting} [numbers=none]
+    $ tree / -L 4 --prune --matchdirs -P '文档|下载|*.docx'
+\end{lstlisting}
+
+\begin{figure} [htbp]
+	\centering
+	\includegraphics [width=0.8\textwidth]{images/ch01/2021-10-31_16-05-54.png}
+	\caption{树状目录结构}
+	\label{fig:2021-10-31_16-05-54}
+\end{figure}
+
+\par 我的用户名是loaden,所以我的主目录路径就是/home/loaden。依次类推，我妻子的主目录路径是/home/mengzhu，我儿子的主目录路径是/home/okayen。这条命令通过参数筛选了我想要的结果，请尝试不带参数直接执行“tree /”，可以加深理解。
+\par 注意：/home本身不是主目录，而是所有用户主目录的挂载点，它通常对应一个单独的分区。事实上Linux系统根目录下的各个子目录可以分布在不同的硬盘分区以及不同的硬盘设备上，这是Windows系统无法实现的。
 
 
 \ifx\all\undefined
