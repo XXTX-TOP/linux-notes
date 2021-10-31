@@ -34,13 +34,33 @@
 
 \section{什么是终端}
 
-\par Linux 系统安装后，绝大多数的操作都是可视化的，用鼠标和键盘与桌面交互，就可以日常使用了。但为了更好的使用或者运维 Linux 系统，我们有时还是离不开命令行的。终端就是一个通过命令来与系统交互的窗口（应用），它的英文名字叫 Terminal 。像 Ubuntu 系统、KDE Plasma 桌面，默认都绑定了 Ctrl+Alt+T 快捷键来启动终端，elementary OS 6 则默认绑定 Super+T 快捷键。没有绑定快捷键的系统，如 Debian、Fedora等，则可以通过启动器来启动，或者自己添加自定义启动快捷键。
+\par Linux 系统安装后，绝大多数的操作都是可视化的，用鼠标和键盘与桌面交互，就可以日常使用了。但为了更好的使用或者运维 Linux 系统，我们有时还是离不开命令行的。终端就是一个通过命令来与系统交互的窗口（应用），它的英文名字叫 Terminal 。像 Ubuntu 系统、KDE Plasma 桌面，默认都绑定了 Ctrl+Alt+T 快捷键来启动终端，elementary OS 6 则默认绑定 Super+T 快捷键。没有绑定快捷键的系统，如 Debian、Fedora等，则可以通过启动器来启动，或者自定义快捷键启动。
 \par 对GNOME桌面，默认的终端应用是 gnome-terminal ，KDE Plasma 桌面默认终端应用 Konsole，桌面不同，一般终端应用各异，但作用相同，用法类似。
-\par 打开终端后，请依序执行以下命令，你会有收获的。
+\par 打开终端后，请依序执行以下\$之后的命令，你会有收获的。
 \begin{lstlisting}
     $ help
     $ whatis man
     $ man man 1
+\end{lstlisting}
+
+
+\section{只在主目录工作}
+
+\par 无论是通过快捷键 Super+E ，还是通过启动器运行“文件”或者“文件管理器”，默认展示的都是主目录内容。主目录也叫家目录、用户目录。
+\par 请放弃寻找“C盘”、“D盘”之类的驱动器！文档、视频、音乐、下载...都在主目录里，你工作、娱乐，都应该在主目录进行。如图\ref{fig:2021-10-28_22-31-38}所示。
+
+\begin{figure} [htbp]
+	\centering
+	\includegraphics [width=0.8\textwidth]{images/ch01/2021-10-28_22-31-38.png}
+	\caption{主目录}
+	\label{fig:2021-10-28_22-31-38}
+\end{figure}
+
+\par 在终端里，主目录可以用符号“~”代替，现在请打开终端，运行下面的命令，看看输出并且与图片\ref{fig:2021-10-28_22-31-38}进行对比。
+\begin{lstlisting}
+    $ ls ~
+    $ echo ~
+    $ echo $HOME
 \end{lstlisting}
 
 
