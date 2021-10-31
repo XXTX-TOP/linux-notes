@@ -110,9 +110,39 @@ alias l='ls -CF'
 
 \par 我的用户名是loaden，严格的说，我的主目录只是loaden，它被建立在home目录下，对应的路径就是/home/loaden。依次类推，我妻子的主目录路径是/home/mengzhu，我儿子的主目录路径是/home/okayen。这条命令通过参数筛选了我想要的结果，请尝试不带参数直接执行“tree /”，可以加深理解。
 \par 注意：/home不是家目录，而是所有用户主目录（家目录）的挂载点、父目录所在路径，它通常对应一个单独的分区。事实上Linux系统根目录下的各个子目录可以分布在不同的硬盘分区以及不同的硬盘设备上。
+\par 大多数Linux目录结构都遵守FHS（Filesystem Hierarchy Standard）文件系统层次化标准。FHS定义了两层规范，第一层是“/”的各个子目录应该放什么文件数据，例如/etc应该存放设置文件，/bin应该存放可执行文件等。第二层则针对/usr及/var这两个目录的子目录来定义，例如/var/log存放日志、/usr/share存放共享数据等。
 
 
 \section{为什么tree命令不存在}
+
+\par 相信很多用户在执行前面讲述的tree命令时，会遇到这样的提示：
+\begin{lstlisting} [numbers=none]
+    Command 'tree' not found, but can be installed with:
+    sudo apt install tree
+\end{lstlisting}
+
+\par 这是因为在很多Linux发行版上，tree这个软件包并没有默认安装。不同的发行版有不同的包管理工具，作用相同，用法类似。目前主流的软件包管理工具有三类，分别是Debian系的apt，红帽、Fedora系的dnf和Arch系的pacman。以安装tree软件包为例，我们只要打开终端，针对不同的发行版选择性的执行以下命令即可。
+\begin{lstlisting} [numbers=none]
+    $ sudo apt install tree
+    $ sudo dnf install tree
+    $ sudo pacman -S tree
+\end{lstlisting}
+
+\par sudo全称为：super user do，顾名思义：干超级用户root才能干的事！所以sudo最常用的功能就是提升命令的执行权限。
+\par 现在很多Linux发行版都提供了“软件”、“商店”或者“应用中心”这样的图形化安装工具，很多应用我们用鼠标操作就可以安装或者卸载了。
+
+\section{\$和\#的区别}
+
+\par 打开终端或者登录shell后，闪烁的光标左边部分，称之为提示符prompt，通常普通用户提示符是美元符号\$，超级用户root提示符是井号\#。该符号表示等待输入命令。
+\par 注意执行下面命令后，提示符和用户名的变化：
+
+\begin{lstlisting} [numbers=none]
+    loaden@yuchen:~$ sudo -i
+    root@yuchen:~# exit
+\end{lstlisting}
+
+\par 截止目前我们介绍的命令，前面都有一个美元符号\$，意思是用普通用户的身份来执行命令。原则上，我们要尽量避免当终端里显示井号\#提示符时执行命令，要永远记得：权力越大，责任越大！滥用权限会给系统带来破坏，也给初学者带来疑惑。
+\par 后面的讲解，如果命令前面是井号\#，说明需要以管理员权限来执行，建议在命令前添加sudo，或者通过“sudo -i”切换到root用户来执行。
 
 
 \ifx\all\undefined
