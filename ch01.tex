@@ -46,7 +46,7 @@
 
 \section{只在主目录工作}
 
-\par 无论是通过快捷键“Super+E”，还是通过启动器运行“文件”或者“文件管理器”，默认展示的都是主目录内容。主目录也叫家目录、用户目录。
+\par 无论是通过快捷键“Super+E”，还是通过启动器运行“文件”或者“文件管理器”，默认展示的都是主目录内容。主目录也叫用户目录。
 \par 请放弃寻找“C盘”、“D盘”之类的驱动器！文档、图片、视频、音乐、下载...都在主目录里，你工作、娱乐，都应该在主目录进行。如图\ref{fig:2021-10-28_22-31-38}所示。
 
 \begin{figure} [htbp]
@@ -87,7 +87,7 @@ alias l='ls -CF'
 
 \section{目录结构是棵树}
 
-\par Linux目录结构就像是一棵倒挂的树，树干叫根目录，用符号“/”表示，一切从“根”开始，“/”是所有目录的起点。现在请在终端执行命令“ls /”，你会看到在根目录下，还有bin、boot、home、usr...等子目录。
+\par Linux目录结构就像是一棵倒挂的树，树干叫根目录，用符号“/”表示，一切从“根”开始，“/”是所有目录的起点。现在请在终端执行命令“{ls\hspace{0.3em} /}”，你会看到在根目录下，还有bin、boot、home、usr...等子目录。
 \begin{lstlisting} [numbers=none]
     loaden@yuchen:~$ ls /
     bin   dev  home  lib32  libx32  mnt  proc  run   srv   sys  usr  vmlinuz
@@ -95,12 +95,12 @@ alias l='ls -CF'
 \end{lstlisting}
 
 \par 每个目录或者文件都可以看作是树上的枝叶,目录就像树枝，文件就像树叶。树枝上还可以再长树枝，目录中也可以再嵌套目录，但树叶上就不可能再长出树枝了。
-\par 在我当前正在使用的系统上执行下面的命令，输出如图\ref{fig:2021-10-31_16-05-54}所示的结果。
+\par 尝试执行下面的命令：
 
 \begin{lstlisting} [numbers=none]
     $ tree / -L 4 --prune --matchdirs -P '文档|下载|*.docx'
 \end{lstlisting}
-
+\par 输出类似：
 \begin{figure} [htbp]
 	\centering
 	\includegraphics [width=0.8\textwidth]{images/ch01/2021-10-31_16-05-54.png}
@@ -108,9 +108,10 @@ alias l='ls -CF'
 	\label{fig:2021-10-31_16-05-54}
 \end{figure}
 
-\par 我的用户名是loaden，严格的说，我的主目录只是loaden，它被建立在home目录下，对应的路径就是/home/loaden。依次类推，我妻子的主目录路径是/home/mengzhu，我儿子的主目录路径是/home/okayen。这条命令通过参数筛选了我想要的结果，请尝试不带参数直接执行“tree /”，可以加深理解。
-\par 注意：/home不是家目录，而是所有用户主目录（家目录）的挂载点、父目录所在路径，它通常对应一个单独的分区。事实上Linux系统根目录下的各个子目录可以分布在不同的硬盘分区以及不同的硬盘设备上。
-\par 大多数Linux目录结构都遵守FHS（Filesystem Hierarchy Standard）文件系统层次化标准。FHS定义了两层规范，第一层是“/”的各个子目录应该放什么文件数据，例如/etc应该存放设置文件，/bin应该存放可执行文件等。第二层则针对/usr及/var这两个目录的子目录来定义，例如/var/log存放日志、/usr/share存放共享数据等。
+\par 系统定义/home为家目录，每一个用户成员会在家目录建立以用户名为路径的子目录，比如：/home/loaden，我们可以将这个目录称为自己的“主目录”\footnote{感谢群友{べ\hspace{0em}\_alley}和RigoLigo的耐心讲解！}。依次类推，我妻子的主目录是/home/mengzhu，我儿子的主目录是/home/okayen。超级用户root的主目录不在/home中，它的路径为/root。
+\par 请尝试不带参数直接执行“{tree\hspace{0.3em} /}”，加深理解。
+\par /home通常对应一个单独的分区，当重装系统时，只要将这个分区再次挂载到/home路径下（别格式化），就可以保留用户数据和配置。事实上Linux系统根目录下的各个子目录可以分布在不同的硬盘分区以及不同的硬盘设备上。
+\par 大多数Linux目录结构都遵守FHS（Filesystem Hierarchy Standard）文件系统层次化标准。FHS定义了两层规范，第一层是“/”的各个子目录应该放什么文件数据，例如/etc应该存放系统配置文件，/bin应该存放系统可执行文件等。第二层则针对/usr及/var这两个目录的子目录来定义，例如/var/log存放日志、/usr/share存放共享资源等。
 
 
 \section{为什么tree命令不存在}
@@ -141,8 +142,8 @@ alias l='ls -CF'
     root@yuchen:~# exit
 \end{lstlisting}
 
-\par 截止目前我们介绍的命令，前面都有一个美元符号\$，意思是用普通用户的身份来执行命令。原则上，我们要尽量避免当终端里显示井号\#提示符时执行命令，要永远记得：权力越大，责任越大！滥用权限会给系统带来破坏，也给初学者带来疑惑。
-\par 后面的讲解，如果命令前面是井号\#，说明需要以管理员权限来执行，建议在命令前添加sudo，或者通过“sudo -i”切换到root用户来执行。
+\par 截止目前我们介绍的命令，每行前面都有一个美元符号\$，意思是用普通用户的身份来执行命令。原则上，我们要尽量避免当终端里显示井号\#提示符时执行命令，要永远记得：权力越大，责任越大！滥用权限会给系统带来破坏，也给初学者带来疑惑。
+\par 后面的讲解，如果命令前面是井号\#，说明需要以管理员权限来执行，建议在命令前添加sudo，或者通过“{sudo\hspace{0.3em} -i}”、“{sudo\hspace{0.3em} -s}”切换到root用户来执行。
 
 
 \ifx\all\undefined
